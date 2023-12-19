@@ -5,9 +5,82 @@
 }
 
 body {
-    background-color: #131316;
+    background-color: #1d1d1e;
     color:white;
     padding: 0px;
     margin: 0px;
     
+}
+.container {
+ height:90vh;
+ border-radius:20px;
+
+}
+.wrapper {
+    margin-left:30px;
+    margin-top:30px;
+}
+.header h1{
+    font-size:45px;
+}
+
+.header h2{
+    font-size:30px;
+    font-weight: 300;
+    margin-top: -10px;
+}
+
+.slideimage {
+    display:grid;
+    grid-auto-flow: column;
+    
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    margin-left: -30px;
+    gap:20px;
+    padding: 0 1rem 1rem;
+    
+}
+
+.slideimage::-webkit-scrollbar {
+    width:1px;
+}
+
+.slideimage::-webkit-scrollbar-thumb {
+    background-color:#1d1d1e;
+    border-radius:6px;
+    
+}
+
+.images img{
+    border-radius:30px;
+    
+}
+
+.images > h5 {
+    margin-left: 20px;
+    margin-top:-20px;
+}
+.images > h3 {
+    margin-left: 20px;
+    
+}
+
+.listing {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.music-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center
+    
+}
+
+.music-image > img {
+    width:30%;
+    border-radius: 50%;
 }
