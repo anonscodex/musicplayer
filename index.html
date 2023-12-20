@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=PT+Mono&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,6 +26,23 @@
             <img src="assets/canel.png" alt="" class="cancel" id="cancel">
         </div>
         
+        <div class="details">
+            <div class="trackArt"></div>
+            <div class="trackName">Track name</div>
+            <div class="trackArtist">Track artist</div>
+        </div>
+
+        <div class="slider_timer">
+            <div class="current_time">00:00</div>
+            <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
+            <div class="total_duration">00:00</div>
+        </div>
+
+        <div class="slider_volume">
+            <div class="fa fa-volume-down"></div>
+            <input type="range" min="1" max="100" value="0" class="volume_slider" onchange="setVolume()">
+            <div class="fa fa-volume-up"></div>
+        </div>
     </div>
 
 
