@@ -60,6 +60,7 @@ body {
 
 .images img{
     border-radius:30px;
+    width:250px;
     
 }
 
@@ -69,7 +70,7 @@ body {
 }
 .images > h3 {
     margin-left: 20px;
-    
+    font-weight: 300;
 }
 
 .listing {
@@ -89,15 +90,20 @@ body {
 
 .music-image > img {
     width:80%;
-    border-radius: 10%;
+    border-radius: 50%;
 }
 
 .song-artist {
-    margin-right:150px;
+    margin-right:40px;
 }
 .song-artist > h4 {
     margin-top:-20px;
     font-weight: 300;
+    width:200px;
+}
+
+.song-music > h4 {
+    width:120px;
 }
 
 .trans {
@@ -169,13 +175,15 @@ body {
     font-size:30px;
 }
 
-.slider_timer, .slider_volume {
+.slider_timer {
     display:flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.seek_slider, .volume_slider {
+
+
+.seek_slider {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -185,8 +193,7 @@ body {
     transition: opacity .2s;
     }
 
-    .seek_slider::-webkit-slider-thumb,
-    .volume_slider::-webkit-slider-thumb {
+    .seek_slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -198,8 +205,7 @@ body {
     border-radius: 100%;
     }
     
-    .seek_slider:hover,
-    .volume_slider:hover {
+    .seek_slider:hover {
     opacity: 1.0;
     }
     
@@ -207,6 +213,24 @@ body {
     width: 60%;
     }
     
-    .volume_slider {
-    width: 30%;
+
+    .buttons {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top:50px
+    }
+
+    .rotate {
+        animation: rotation 8s infinite linear;
+    }
+
+    @keyframes rotation {
+
+        from{
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
