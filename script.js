@@ -6,6 +6,9 @@ let trackArt = document.querySelector('.trackArt');
 let trackArtist = document.querySelector('.trackArtist');
 let currentTrack = document.createElement('audio');
 let playnpause = document.querySelector(".playpause-track")
+let random = document.querySelector('.random-track')
+let repeat = document.querySelector('.repeat-track')
+
 player.addEventListener('click', ()=> {
     trans.classList.remove('hidden')
 })
@@ -17,10 +20,19 @@ cancel.addEventListener('click', ()=> {
 let updateTimer;
 let track_index = 0;
 let isPlaying = false;
+let isRandom = false;
+let isRepeat = false;
 
 const musicList = [
     {
-        name : 'Unavailable',
+        name : 'Lonely At The Top',
+        artist : 'Asake',
+        music : 'music/lonely.mp3',
+        img : 'assets/asake.jpg'
+    },
+
+    {
+        name : 'Available',
         artist : 'Davido',
         music : 'music/unavailable.mp3',
         img : 'assets/davido.jpg'
@@ -45,19 +57,12 @@ const musicList = [
         artist : 'Davido',
         music : 'music/available.mp3',
         img : 'assets/1.png'
-    },
-
-    {
-        name : 'Available',
-        artist : 'Davido',
-        music : 'music/available.mp3',
-        img : 'assets/1.png'
     }
 ]
 
-loadTrack(track_index)
 
-function loadTrack(track_index){
+
+loadTrack = (track_index)=> {
     //clearInterval(updateTimer)
     
 
@@ -68,23 +73,73 @@ function loadTrack(track_index){
     trackName.textContent = musicList[track_index].name;
     trackArt.style.backgroundImage = "url(" + musicList[track_index].img + ")"
 
+    currentTrack.addEventListener('ended', nextTrack);
+
 
 }
 
-function playTrack() {
+loadTrack(track_index)
+
+playTrack = ()=> {
     currentTrack.play();
     isPlaying = true;
     playnpause.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
     trackArt.classList.add('rotate')
 }
 
-function pauseTrack() {
+ pauseTrack = ()=> {
     currentTrack.pause()
     isPlaying = false;
     playnpause.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
     trackArt.classList.remove('rotate')
 }
 
-function playpauseTrack() {
+playpauseTrack = ()=> {
     isPlaying ? pauseTrack() : playTrack();
+}
+
+ playRandom = ()=> {
+isRandom = true;
+random.classList.add('On')
+}
+
+ pauseRandom = ()=> {
+isRandom = false;
+random.classList.remove('On')
+}
+
+randomTrack = ()=> {
+    isRandom ? pauseRandom() : playRandom();
+}
+
+repeatTrack = ()=> {
+    let current_index = track_index;
+    loadTrack(current_index);
+    playTrack()
+
+    isRepeat ? offRepeat() : onRepeat();
+}
+
+onRepeat = ()=> {
+isRepeat = true;
+repeat.classList.add('On');
+}
+
+offRepeat = ()=> {
+isRepeat = false;
+repeat.classList.remove('On');
+}
+
+function nextTrack() {
+    if(track_index < musicList.length - 1 && isRandom === false) {
+        track_index += 1
+    }else if (track_index < musicList.length - 1 && isRandom === true){
+        let random_index = Number.parseInt(Math.random * musicList.length);
+        track_index = random_index;
+    }else {
+        track_index = 0
+    }
+
+    loadTrack(track_index)
+    playTrack();
 }
