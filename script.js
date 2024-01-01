@@ -46,21 +46,21 @@ const musicList = [
         name : 'Available',
         artist : 'Davido',
         music : 'music/available.mp3',
-        img : 'assets/1.png'
+        img : 'assets/burna.jpg'
     },
 
     {
         name : 'Available',
         artist : 'Davido',
         music : 'music/available.mp3',
-        img : 'assets/1.png'
+        img : 'assets/diay.jpg'
     },
 
     {
         name : 'Available',
         artist : 'Davido',
         music : 'music/available.mp3',
-        img : 'assets/1.png'
+        img : 'assets/portable.jpg'
     }
 ]
 
@@ -79,7 +79,7 @@ loadTrack = (track_index)=> {
     trackArt.style.backgroundImage = "url(" + musicList[track_index].img + ")"
 
     updateTimer = setInterval(setUpdate, 1000);
-    
+
     currentTrack.addEventListener('ended', nextTrack);
 
 
@@ -193,4 +193,40 @@ function reset(){
     currentTime.textContent = "00:00";
     totalDuration.textContent = "00:00";
     seekSlider.value = 0;
+}
+
+function asake() {
+    
+    track_index = 0;
+
+    loadTrack(track_index);
+    playTrack()
+}
+
+function davido() {
+    track_index = 1;
+
+    loadTrack(track_index);
+    playTrack()
+}
+
+function burna() {
+    track_index = 2;
+
+    loadTrack(track_index);
+    playTrack()
+}
+
+function djay() {
+    track_index = 2;
+
+    loadTrack(track_index);
+    playTrack()
+}
+
+function portable() {
+    track_index = 4;
+
+    loadTrack(track_index);
+    playTrack()
 }
