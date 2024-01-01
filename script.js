@@ -8,6 +8,10 @@ let currentTrack = document.createElement('audio');
 let playnpause = document.querySelector(".playpause-track")
 let random = document.querySelector('.random-track')
 let repeat = document.querySelector('.repeat-track')
+let seekSlider = document.querySelector('.seek_slider');
+let currentTime = document.querySelector('.current_time');
+let totalDuration = document.querySelector('.total_duration');
+
 
 player.addEventListener('click', ()=> {
     trans.classList.remove('hidden')
@@ -63,7 +67,8 @@ const musicList = [
 
 
 loadTrack = (track_index)=> {
-    //clearInterval(updateTimer)
+    clearInterval(updateTimer);
+    reset();
     
 
     currentTrack.src = musicList[track_index].music;
@@ -73,6 +78,8 @@ loadTrack = (track_index)=> {
     trackName.textContent = musicList[track_index].name;
     trackArt.style.backgroundImage = "url(" + musicList[track_index].img + ")"
 
+    updateTimer = setInterval(setUpdate, 1000);
+    
     currentTrack.addEventListener('ended', nextTrack);
 
 
@@ -142,4 +149,48 @@ function nextTrack() {
 
     loadTrack(track_index)
     playTrack();
+}
+
+
+function prevTrack() {
+    if(track_index > 0){
+        track_index -= 1
+    }else {
+        track_index = musicList.length -1
+    }
+
+    loadTrack(track_index);
+    playTrack()
+}
+
+function seekTo(){
+    let seekto = currentTrack.duration * (seekSlider.value / 100)
+    currentTrack.currentTime = seekto;
+}
+
+function setUpdate(){
+    let seekPosition = 0;
+    if(!isNaN(currentTrack.duration)){
+        seekPosition = currentTrack.currentTime * (100 / currentTrack.duration);
+        seekSlider.value = seekPosition;
+
+        let currentMinutes = Math.floor(currentTrack.currentTime / 60);
+        let currentSeconds = Math.floor(currentTrack.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(currentTrack.duration / 60);
+        let durationSeconds = Math.floor(currentTrack.duration - durationMinutes * 60);
+
+        if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
+        if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
+        if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+
+        currentTime.textContent = currentMinutes + ":" + currentSeconds;
+        totalDuration.textContent = durationMinutes + ":" + durationSeconds;
+    }
+}
+
+function reset(){
+    currentTime.textContent = "00:00";
+    totalDuration.textContent = "00:00";
+    seekSlider.value = 0;
 }
