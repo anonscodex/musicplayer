@@ -80,6 +80,16 @@ body {
 
 }
 
+.listing::-webkit-scrollbar-thumb {
+    background-color:#1d1d1e;
+    border-radius:6px;
+    
+}
+
+.listing::-webkit-scrollbar {
+    width:1px;
+}
+
 .music-list {
     display: flex;
     align-content: center;
@@ -238,3 +248,5 @@ body {
     .On{
         color:#ffc83d;
     }
+
+   
