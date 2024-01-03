@@ -36,29 +36,29 @@ const musicList = [
     },
 
     {
-        name : 'Available',
+        name : 'Unavailable',
         artist : 'Davido',
         music : 'music/unavailable.mp3',
         img : 'assets/davido.jpg'
     },
 
     {
-        name : 'Available',
-        artist : 'Davido',
+        name : 'Common person',
+        artist : 'Burna Boy',
         music : 'music/common.mp3',
         img : 'assets/burna.jpg'
     },
 
     {
-        name : 'Available',
-        artist : 'Davido',
+        name : 'Balance it',
+        artist : 'Djay',
         music : 'music/balance.mp3',
         img : 'assets/djay.jpg'
     },
 
     {
-        name : 'Available',
-        artist : 'Davido',
+        name : 'Am not a prisoner',
+        artist : 'Portable',
         music : 'music/prison.mp3',
         img : 'assets/portable.jpg'
     }
